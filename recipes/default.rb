@@ -85,6 +85,12 @@ secret_key ||= node['docker-registry']['secret_key']
 
 raise ArgumentError, "secret_key is not defined" unless secret_key
 
+directory ::File.join(node['docker-registry']['install_dir'], 'env') do
+  recursive true
+  owner     node['docker-registry']['owner']
+  group     node['docker-registry']['group']
+end
+
 application "docker-registry" do
   owner node['docker-registry']['owner']
   group node['docker-registry']['group']
