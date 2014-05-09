@@ -98,6 +98,7 @@ application "docker-registry" do
   repository node['docker-registry']['repository']
   revision node['docker-registry']['revision']
   packages node['docker-registry']['packages']
+  shallow_clone false
 
   action :force_deploy
   symlinks "config.yml" => "config/config.yml"
