@@ -100,7 +100,7 @@ application "docker-registry" do
   packages node['docker-registry']['packages']
 
   action :force_deploy
-  symlinks "config.yml" => "config.yml"
+  symlinks "config.yml" => "config/config.yml"
 
   before_migrate do
     template "#{new_resource.path}/shared/config.yml" do
